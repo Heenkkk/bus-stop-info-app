@@ -1,10 +1,14 @@
+import { useStopsQuery } from './queries';
+import StopsList from './components/StopsList';
 import { useEffect, useState } from 'react';
 
 const App = () => {
   const [searchText, setSearchText] = useState('');
+  const [executeSearch, { data, error, loading }] = useStopsQuery();
 
   useEffect(() => {
-    searchText.length > 0 && console.log(searchText);
+    searchText.length > 0 &&
+      executeSearch({ variables: { stopName: searchText } });
   }, [searchText]);
 
   return (
@@ -14,9 +18,13 @@ const App = () => {
         type="text"
         name="search"
         value={searchText}
-        onChange={(event) => setSearchText(event.target.value)}
+        onChange={(event) => {
+          event.preventDefault();
+          setSearchText(event.target.value);
+        }}
         style={{ display: 'block', margin: '0 auto' }}
       />
+      <StopsList stops={data?.stops} error={error} loading={loading} />
     </div>
   );
 };
