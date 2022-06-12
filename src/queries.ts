@@ -1,7 +1,6 @@
-import { gql, useLazyQuery } from '@apollo/client';
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
 
 export interface StopType {
-  id: string;
   gtfsId: string;
   name: string;
   code: string;
@@ -9,17 +8,26 @@ export interface StopType {
   lon: number;
   zoneId: string;
   desc: string;
-  url: string;
 }
 
-export interface StopsQueryResponse {
-  stops: StopType[];
+export interface StopQueryResponseType {
+  stop: StopType;
+}
+
+export interface SimpleStopType {
+  gtfsId: string;
+  name: string;
+  code: string;
+  desc: string;
+}
+
+export interface StopsListQueryResponseType {
+  stops: SimpleStopType[];
 }
 
 export const GET_STOPS = gql`
   query stops($stopName: String!) {
     stops(name: $stopName) {
-      id
       gtfsId
       name
       code
@@ -27,11 +35,30 @@ export const GET_STOPS = gql`
       lon
       zoneId
       desc
-      url
     }
   }
 `;
 
-export const useStopsQuery = () => {
-  return useLazyQuery<StopsQueryResponse>(GET_STOPS);
+export const GET_STOP_BY_ID = gql`
+  query stop($stopId: String!) {
+    stop(id: $stopId) {
+      gtfsId
+      name
+      code
+      lat
+      lon
+      zoneId
+      desc
+    }
+  }
+`;
+
+export const useStopsListQuery = () => {
+  return useLazyQuery<StopsListQueryResponseType>(GET_STOPS);
+};
+
+export const useStopQuery = (stopId: string | undefined) => {
+  return useQuery<StopQueryResponseType>(GET_STOP_BY_ID, {
+    variables: { stopId: stopId },
+  });
 };

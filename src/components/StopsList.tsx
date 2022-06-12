@@ -1,12 +1,13 @@
 import { ApolloError } from '@apollo/client';
-import { StopType } from '../queries';
+import { SimpleStopType } from '../queries';
+import { Link } from 'react-router-dom';
 
 const StopsList = ({
   stops,
   error,
   loading,
 }: {
-  stops: StopType[] | undefined;
+  stops: SimpleStopType[] | undefined;
   error: ApolloError | undefined;
   loading: boolean | undefined;
 }) => {
@@ -20,7 +21,12 @@ const StopsList = ({
 
   return (
     <div>
-      {stops && stops.map((stop) => <h4 key={stop.id}>{stop.name}</h4>)}
+      {stops &&
+        stops.map((stop) => (
+          <Link key={stop.gtfsId} to={stop.gtfsId}>
+            <h4>{stop.name}</h4>
+          </Link>
+        ))}
     </div>
   );
 };
