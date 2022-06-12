@@ -8,6 +8,36 @@ export interface StopType {
   lon: number;
   zoneId: string;
   desc: string;
+  url: string;
+  wheelchairBoarding: 'POSSIBLE' | 'NO_INFORMATION' | 'NOT_POSSIBLE';
+  parentStation:
+    | {
+        gtfsId: string;
+        name: string;
+      }
+    | undefined;
+  alerts: {
+    alertDescriptionText: string;
+    alertUrl: string;
+  }[];
+  routes: {
+    gtfsId: string;
+    shortName: string;
+    longName: string;
+    mode: string;
+  }[];
+  stoptimesWithoutPatterns: {
+    scheduledDeparture: number;
+    serviceDay: number;
+    headsign: string;
+    trip: {
+      id: string;
+      route: {
+        shortName: string;
+        longName: string;
+      };
+    };
+  }[];
 }
 
 export interface StopQueryResponseType {
@@ -48,6 +78,34 @@ export const GET_STOP_BY_ID = gql`
       lon
       zoneId
       desc
+      url
+      wheelchairBoarding
+      parentStation {
+        gtfsId
+        name
+      }
+      alerts {
+        alertDescriptionText
+        alertUrl
+      }
+      routes {
+        gtfsId
+        shortName
+        longName
+        mode
+      }
+      stoptimesWithoutPatterns {
+        scheduledDeparture
+        serviceDay
+        headsign
+        trip {
+          id
+          route {
+            shortName
+            longName
+          }
+        }
+      }
     }
   }
 `;

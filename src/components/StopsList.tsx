@@ -41,7 +41,11 @@ const StopsList = ({
               <ListItemText
                 primary={stop.name}
                 secondary={
-                  <Box display="grid" gridTemplateColumns={'repeat(12, 1fr)'}>
+                  <Box
+                    component={'span'}
+                    display="grid"
+                    gridTemplateColumns={'repeat(12, 1fr)'}
+                  >
                     <Typography
                       gridColumn={'span 6'}
                       component="span"
