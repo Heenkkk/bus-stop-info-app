@@ -18,6 +18,7 @@ export interface SimpleStopType {
   gtfsId: string;
   name: string;
   code: string;
+  zoneId: string;
   desc: string;
 }
 
@@ -31,8 +32,6 @@ export const GET_STOPS = gql`
       gtfsId
       name
       code
-      lat
-      lon
       zoneId
       desc
     }

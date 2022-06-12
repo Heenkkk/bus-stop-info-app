@@ -3,6 +3,7 @@ import StopsList from './components/StopsList';
 import { useEffect, useState } from 'react';
 import StopInformation from './components/StopInformation';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Box, TextField, Typography } from '@mui/material';
 
 const App = () => {
   const [searchText, setSearchText] = useState('');
@@ -14,23 +15,25 @@ const App = () => {
   }, [searchText]);
 
   return (
-    <div className="content">
-      <h1 style={{ textAlign: 'center' }}>Bus Stop Information App</h1>
+    <Box className="content">
+      <Typography variant="h4" sx={{ textAlign: 'center', m: 1 }}>
+        Bus Stop Information App
+      </Typography>
       <Router>
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <input
-                  type="text"
-                  name="search"
+                <TextField
+                  id="search-stops"
                   value={searchText}
                   onChange={(event) => {
                     event.preventDefault();
                     setSearchText(event.target.value);
                   }}
-                  style={{ display: 'block', margin: '0 auto' }}
+                  sx={{ my: 1 }}
+                  fullWidth
                 />
                 <StopsList
                   stops={data?.stops}
@@ -43,7 +46,7 @@ const App = () => {
           <Route path="/:stopId" element={<StopInformation />} />
         </Routes>
       </Router>
-    </div>
+    </Box>
   );
 };
 

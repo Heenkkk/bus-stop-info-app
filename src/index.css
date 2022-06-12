@@ -13,6 +13,7 @@ code {
 }
 
 .content {
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
+  padding: 8px;
 }

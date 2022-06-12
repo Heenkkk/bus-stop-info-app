@@ -1,6 +1,14 @@
 import { ApolloError } from '@apollo/client';
 import { SimpleStopType } from '../queries';
 import { Link } from 'react-router-dom';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Box,
+  Typography,
+} from '@mui/material';
 
 const StopsList = ({
   stops,
@@ -20,14 +28,52 @@ const StopsList = ({
   }
 
   return (
-    <div>
+    <List sx={{ width: 1 }}>
       {stops &&
         stops.map((stop) => (
-          <Link key={stop.gtfsId} to={stop.gtfsId}>
-            <h4>{stop.name}</h4>
-          </Link>
+          <Box key={stop.gtfsId}>
+            <ListItem
+              key={stop.gtfsId}
+              button
+              component={Link}
+              to={stop.gtfsId}
+            >
+              <ListItemText
+                primary={stop.name}
+                secondary={
+                  <Box display="grid" gridTemplateColumns={'repeat(12, 1fr)'}>
+                    <Typography
+                      gridColumn={'span 6'}
+                      component="span"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      Description: {stop.desc}
+                    </Typography>
+                    <Typography
+                      gridColumn={'span 4'}
+                      component="span"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      Code: {stop.code}
+                    </Typography>
+                    <Typography
+                      gridColumn={'span 2'}
+                      component="span"
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      Zone: {stop.zoneId}
+                    </Typography>
+                  </Box>
+                }
+              />
+            </ListItem>
+            <Divider />
+          </Box>
         ))}
-    </div>
+    </List>
   );
 };
 
