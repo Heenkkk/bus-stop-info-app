@@ -9,18 +9,35 @@ import {
   Divider,
 } from '@mui/material';
 
+/**
+ * Renders the information relating to a chosen HSL stop.
+ *
+ * Uses the stop id from the URI and queries the stop data via graphql.
+ *
+ * @returns The rendered view.
+ */
 const StopInformation = () => {
+  // Get the stop id from the URI and query.
   const params = useParams();
   const { loading, error, data } = useStopQuery(params.stopId);
 
+  // If the query is loading, return some text.
   if (loading) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   }
 
+  // If there is an error or no data is fetched, return some text.
   if (error || !data) {
     return <div style={{ textAlign: 'center' }}>ERROR...</div>;
   }
 
+  /**
+   * Helper function to fetch some accessibility information. Is
+   * used to avoid having to define switch statements within the
+   * returned jsx code.
+   *
+   * @returns A string that describes the accessibility information.
+   */
   const getAccessibilityInfo = () => {
     switch (data.stop.wheelchairBoarding) {
       case 'POSSIBLE':
@@ -37,6 +54,17 @@ const StopInformation = () => {
     }
   };
 
+  /**
+   * Helper function to calculate the departure time from the
+   * provided arguments. Is used to avoid unnecessary math
+   * in the returned jsx code.
+   *
+   * @param scheduledDeparture The scheduled departure time as
+   * seconds from midnight on the date of departure.
+   * @param serviceDay The departure date as a unix time stamp (
+   * in seconds).
+   * @returns A formatted string of the departure date.
+   */
   const getDepartureTime = (scheduledDeparture: number, serviceDay: number) => {
     const unixTimestamp = scheduledDeparture + serviceDay;
     const date = new Date(unixTimestamp * 1000);

@@ -9,7 +9,17 @@ import {
   Box,
   Typography,
 } from '@mui/material';
+import PropTypes from 'prop-types';
 
+/**
+ * Lists the stops that have been queried using graphql.
+ *
+ * @param stops The list of stops that were queried.
+ * @param error ApolloError describing possible errors during query.
+ * @param loading Boolean describing whether the query is loading.
+ *
+ * @returns The rendered list of stops.
+ */
 const StopsList = ({
   stops,
   error,
@@ -19,10 +29,12 @@ const StopsList = ({
   error: ApolloError | undefined;
   loading: boolean | undefined;
 }) => {
+  // If the query is loading, return some text.
   if (loading) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   }
 
+  // If there was an error, return some text.
   if (error) {
     return <div style={{ textAlign: 'center' }}>ERROR...</div>;
   }
@@ -79,6 +91,20 @@ const StopsList = ({
         ))}
     </List>
   );
+};
+
+StopsList.propTypes = {
+  stops: PropTypes.arrayOf(
+    PropTypes.shape({
+      gtfsId: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      code: PropTypes.string.isRequired,
+      zoneId: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+    }),
+  ),
+  error: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 export default StopsList;

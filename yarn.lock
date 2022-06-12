@@ -60,47 +60,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:latest":
-  version: 3.6.7
-  resolution: "@apollo/client@npm:3.6.7"
-  dependencies:
-    "@graphql-typed-document-node/core": ^3.1.1
-    "@wry/context": ^0.6.0
-    "@wry/equality": ^0.5.0
-    "@wry/trie": ^0.3.0
-    graphql-tag: ^2.12.6
-    hoist-non-react-statics: ^3.3.2
-    optimism: ^0.16.1
-    prop-types: ^15.7.2
-    symbol-observable: ^4.0.0
-    ts-invariant: ^0.10.3
-    tslib: ^2.3.0
-    zen-observable-ts: ^1.2.5
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
-    graphql-ws: ^5.5.5
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    subscriptions-transport-ws: ^0.9.0 || ^0.11.0
-  peerDependenciesMeta:
-    graphql-ws:
-      optional: true
-    react:
-      optional: true
-    subscriptions-transport-ws:
-      optional: true
-  checksum: d2cfc230c08753b82574ef767a7331b44fb5c3159bc837d66cd277ee7dd856232190773e020ac05b92838b046d5fd14e02a809583fbf9a4672a1d96383bf4024
-  languageName: node
-  linkType: hard
-
-"@apollo/react-hooks@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@apollo/react-hooks@npm:4.0.0"
-  dependencies:
-    "@apollo/client": latest
-  checksum: 067744272e8396e328f7753d8954512e9bd3edbadb2c513692e44d34348cb2e0126d9aa7471634cd47a6b2f36d62dbdf9db912b56a16326ce25bfb47ee37471a
-  languageName: node
-  linkType: hard
-
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.0, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.8.3":
   version: 7.16.7
   resolution: "@babel/code-frame@npm:7.16.7"
@@ -3064,7 +3023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.5":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15, @types/prop-types@npm:^15.7.5":
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
   checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
@@ -4385,7 +4344,6 @@ __metadata:
   resolution: "bus-stop-info-app@workspace:."
   dependencies:
     "@apollo/client": ^3.6.6
-    "@apollo/react-hooks": ^4.0.0
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.8.3
@@ -4396,6 +4354,7 @@ __metadata:
     "@types/jest": ^28.1.1
     "@types/node": ^17.0.41
     "@types/prettier": ^2.6.3
+    "@types/prop-types": ^15
     "@types/react": ^18.0.12
     "@types/react-dom": ^18.0.5
     "@typescript-eslint/eslint-plugin": ^5.27.1
@@ -4406,6 +4365,7 @@ __metadata:
     eslint-plugin-react: ^7.30.0
     graphql: ^16.5.0
     prettier: ^2.6.2
+    prop-types: ^15.8.1
     react: ^18.1.0
     react-dom: ^18.1.0
     react-router-dom: ^6.3.0
