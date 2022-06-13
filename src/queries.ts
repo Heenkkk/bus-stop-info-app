@@ -97,6 +97,7 @@ export interface SimpleStopType {
   zoneId: string;
   /** Short description of the stop. Usually the street address. */
   desc: string;
+  vehicleMode: string;
 }
 
 /**
@@ -120,6 +121,7 @@ export const GET_STOPS = gql`
       code
       zoneId
       desc
+      vehicleMode
     }
   }
 `;
