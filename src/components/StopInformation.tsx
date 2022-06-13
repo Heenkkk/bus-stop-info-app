@@ -144,9 +144,7 @@ const StopInformation = () => {
               >
                 {data.stop.routes.map((route) => (
                   <Box component="span" key={route.gtfsId} sx={{ width: 1 }}>
-                    {`${route.shortName} - ${route.mode.toLowerCase()}: ${
-                      route.longName
-                    }`}
+                    {`${route.shortName}: ${route.longName}`}
                   </Box>
                 ))}
               </Box>
