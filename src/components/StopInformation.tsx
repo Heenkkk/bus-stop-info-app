@@ -28,6 +28,7 @@ const StopInformation = () => {
 
   // If there is an error or no data is fetched, return some text.
   if (error || !data) {
+    console.log(params);
     return <div style={{ textAlign: 'center' }}>ERROR...</div>;
   }
 

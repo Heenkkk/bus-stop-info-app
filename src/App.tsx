@@ -32,7 +32,11 @@ const App = () => {
 
   return (
     <Box className="content">
-      <Typography variant="h4" sx={{ textAlign: 'center', m: 1 }}>
+      <Typography
+        data-testid="application-title"
+        variant="h4"
+        sx={{ textAlign: 'center', m: 1 }}
+      >
         Bus Stop Information App
       </Typography>
       <Router>
@@ -43,6 +47,7 @@ const App = () => {
               <>
                 <TextField
                   id="search-stops"
+                  data-testid="search-stops"
                   value={searchText}
                   placeholder="Search for stop names"
                   onChange={(event) => {

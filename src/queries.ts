@@ -29,6 +29,7 @@ export interface StopType {
         /** Name of the station. */
         name: string;
       }
+    | null
     | undefined;
   /**
    * Alerts that could affect this stop. Empty if there are no relevant
