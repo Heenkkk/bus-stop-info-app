@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Bus Stop Info App
 
 ## Demo link:
@@ -21,3 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 You may also deploy the application on your own, either using the project's own [CircleCI](https://circleci.com/) configuration to deploy it to [Heroku](https://heroku.com), or define your own deployment pipeline.
+
+## License
+
+This project is licensed under MIT.
