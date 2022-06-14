@@ -44,6 +44,7 @@ const App = () => {
                 <TextField
                   id="search-stops"
                   value={searchText}
+                  placeholder="Search for stop names"
                   onChange={(event) => {
                     event.preventDefault();
                     setSearchText(event.target.value);
